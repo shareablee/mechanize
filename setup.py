@@ -23,6 +23,7 @@ Johnny Lee (MSIE Cookie support) and last but not least Andy Lester
 """
 
 import os
+from setuptools import setup
 
 VERSION = open(os.path.join("mechanize", "_version.py")).\
     readlines()[0].strip(' "\n')
@@ -61,14 +62,7 @@ Topic :: Text Processing :: Markup :: HTML
 Topic :: Text Processing :: Markup :: XML
 """
 
-def main():
-    try:
-        import setuptools
-    except ImportError:
-        import ez_setup
-        ez_setup.use_setuptools()
-    import setuptools
-    setuptools.setup(
+METADATA = dict(
         name = "mechanize",
         version = VERSION,
         license = "BSD",  # or ZPL 2.1
@@ -87,6 +81,5 @@ def main():
         packages = ["mechanize"],
         )
 
-
 if __name__ == "__main__":
-    main()
+    setup(**METADATA)
